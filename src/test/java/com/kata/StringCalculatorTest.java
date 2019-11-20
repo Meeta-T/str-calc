@@ -34,7 +34,8 @@ public class StringCalculatorTest {
 	        new Object[] { "//;\n1;2", 3 },
 	        new Object[] { "1001,2", 2 },
 	        new Object[] { "//[***]\n1***2***3", 6 },
-	        new Object[] { "//[*][%]\n1*2%3", 6 }
+	        new Object[] { "//[*][%]\n1*2%3", 6 },
+	        new Object[] { "//[foo][bar]\n1foo2bar3", 6 }
 	    };
 	}
 	@Test
