@@ -21,7 +21,8 @@ public class StringCalculatorTest {
 		stringCalculator = new StringCalculator();
 	}
 	@Test
-	@Parameters({",0"})
+	@Parameters({",0",
+				"2,2"})
 	public void shouldAdd(String numbers,Integer result){
 		assertThat(stringCalculator.add(numbers),is(result));
 	}
