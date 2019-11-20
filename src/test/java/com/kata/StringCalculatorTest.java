@@ -4,7 +4,9 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 
 import com.kata.StringCalculator;
@@ -37,4 +39,14 @@ public class StringCalculatorTest {
 	public void shouldAdd(String numbers,Integer result){
 		assertThat(stringCalculator.add(numbers),is(result));
 	}
+	
+	@Rule
+    public ExpectedException thrown = ExpectedException.none();
+	
+	@Test
+    public void throwsExceptionWhenNegativeNumbers() {
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage("negatives not allowed:-2 -3");
+        stringCalculator.add("1,-2,-3");
+    }
 }
