@@ -8,6 +8,7 @@ public class StringCalculator {
 	Integer add(String numbers){
 		Integer result = new Integer(0);
 		String seperator = ",";
+		String[] arrSeperator;
 		List<Integer> negativeNumbers = new ArrayList<Integer>();
 		Integer iNumber;
 		if(!numbers.isEmpty()){
@@ -15,11 +16,15 @@ public class StringCalculator {
 			if(firstLine.startsWith("//")){
 				String seperatorString = firstLine.substring(2);
 				if(seperatorString.length()!=1){
+					seperatorString = seperatorString.replace("][",",");
 					seperatorString = seperatorString.replace("[","");
-					seperatorString = seperatorString.replace("]", "");
+					seperatorString = seperatorString.replace("]","");
 				}
-				seperator = seperatorString;
+				arrSeperator = seperatorString.split(",");
 				numbers = numbers.split("\n")[1];
+				for (int i = 0; i < arrSeperator.length; i++) {
+					numbers = numbers.replace(arrSeperator[i], ",");
+				}
 			}
 			String[] arrNumbersNewLine = numbers.split("\n");
 			
