@@ -27,7 +27,8 @@ public class StringCalculatorTest {
 	        new Object[] { "2",2 },
 	        new Object[] { "3,5",8 },
 	        new Object[] { "3,4,6",13 },
-	        new Object[] { "1,2,3,4,5,6,7,8,9", 45 }
+	        new Object[] { "1,2,3,4,5,6,7,8,9", 45 },
+	        new Object[] { "1\n2,3", 6 }
 	    };
 	}
 	@Test
