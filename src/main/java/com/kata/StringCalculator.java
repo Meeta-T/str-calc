@@ -19,9 +19,9 @@ public class StringCalculator {
 			for (String strNewLine : arrNumbersNewLine){
 				String[] arrNumbers = strNewLine.split(seperator);
 				for (String string : arrNumbers) {
-					if(Integer.parseInt(string)>=0)
+					if(Integer.parseInt(string)>=0 && Integer.parseInt(string)<=1000)
 						result = result + Integer.parseInt(string);
-					else
+					else if(Integer.parseInt(string)<0)
 						negativeNumbers.add(Integer.parseInt(string));
 				}
 			}
