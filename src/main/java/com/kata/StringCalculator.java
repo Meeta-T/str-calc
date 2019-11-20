@@ -5,9 +5,13 @@ public class StringCalculator {
 		Integer result = new Integer(0);
 		String seperator = ",";
 		if(!numbers.isEmpty()){
-			String[] arrNumbers = numbers.split(seperator);
-			for (String string : arrNumbers) {
-				result = result + Integer.parseInt(string);
+			String[] arrNumbersNewLine = numbers.split("\n");
+			
+			for (String strNewLine : arrNumbersNewLine){
+				String[] arrNumbers = strNewLine.split(seperator);
+				for (String string : arrNumbers) {
+					result = result + Integer.parseInt(string);
+				}
 			}
 		}
 		return result;
