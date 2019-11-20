@@ -8,6 +8,7 @@ public class StringCalculator {
 		Integer result = new Integer(0);
 		String seperator = ",";
 		List<Integer> negativeNumbers = new ArrayList<Integer>();
+		Integer iNumber;
 		if(!numbers.isEmpty()){
 			String firstLine = numbers.split("\n")[0];
 			if(firstLine.startsWith("//")){
@@ -19,10 +20,11 @@ public class StringCalculator {
 			for (String strNewLine : arrNumbersNewLine){
 				String[] arrNumbers = strNewLine.split(seperator);
 				for (String string : arrNumbers) {
-					if(Integer.parseInt(string)>=0 && Integer.parseInt(string)<=1000)
-						result = result + Integer.parseInt(string);
-					else if(Integer.parseInt(string)<0)
-						negativeNumbers.add(Integer.parseInt(string));
+					iNumber = Integer.parseInt(string);
+					if(iNumber>=0 && iNumber<=1000)
+						result = result + iNumber;
+					else if(iNumber<0)
+						negativeNumbers.add(iNumber);
 				}
 			}
 			if(!negativeNumbers.isEmpty())
