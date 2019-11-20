@@ -5,28 +5,23 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class StringCalculator {
+	public static final String NEW_LINE = "\n";
 	Integer add(String numbers){
 		Integer result = new Integer(0);
 		String seperator = ",";
-		String[] arrSeperator;
+		String[] customSeperator;
 		List<Integer> negativeNumbers = new ArrayList<Integer>();
 		Integer iNumber;
 		if(!numbers.isEmpty()){
-			String firstLine = numbers.split("\n")[0];
+			String firstLine = numbers.split(NEW_LINE)[0];
 			if(firstLine.startsWith("//")){
-				String seperatorString = firstLine.substring(2);
-				if(seperatorString.length()!=1){
-					seperatorString = seperatorString.replace("][",",");
-					seperatorString = seperatorString.replace("[","");
-					seperatorString = seperatorString.replace("]","");
-				}
-				arrSeperator = seperatorString.split(",");
-				numbers = numbers.split("\n")[1];
-				for (int i = 0; i < arrSeperator.length; i++) {
-					numbers = numbers.replace(arrSeperator[i], ",");
+				customSeperator = getCustomSeparator(firstLine);
+				numbers = numbers.split(NEW_LINE)[1];
+				for (int i = 0; i < customSeperator.length; i++) {
+					numbers = numbers.replace(customSeperator[i], ",");
 				}
 			}
-			String[] arrNumbersNewLine = numbers.split("\n");
+			String[] arrNumbersNewLine = numbers.split(NEW_LINE);
 			
 			for (String strNewLine : arrNumbersNewLine){
 				String[] arrNumbers = strNewLine.split(Pattern.quote(seperator));
@@ -42,5 +37,14 @@ public class StringCalculator {
 				throw new IllegalArgumentException("negatives not allowed: "+negativeNumbers.toString());
 		}
 		return result;
+	}
+	private String[] getCustomSeparator(String SeperatorInput){
+		String seperatorString = SeperatorInput.substring(2);
+		if(seperatorString.length()!=1){
+			seperatorString = seperatorString.replace("][",",");
+			seperatorString = seperatorString.replace("[","");
+			seperatorString = seperatorString.replace("]","");
+		}
+		return seperatorString.split(",");
 	}
 }
