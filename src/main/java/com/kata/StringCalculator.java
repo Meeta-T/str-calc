@@ -5,8 +5,9 @@ public class StringCalculator {
 		Integer result = new Integer(0);
 		String seperator = ",";
 		if(!numbers.isEmpty()){
-			if(numbers.split("\n")[0].startsWith("//")){
-				seperator = numbers.split("\n")[0].substring(2);
+			String firstLine = numbers.split("\n")[0];
+			if(firstLine.startsWith("//")){
+				seperator = firstLine.substring(2);
 				numbers = numbers.substring(4);
 			}
 			String[] arrNumbersNewLine = numbers.split("\n");
