@@ -2,6 +2,7 @@ package com.kata;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class StringCalculator {
 	Integer add(String numbers){
@@ -12,13 +13,18 @@ public class StringCalculator {
 		if(!numbers.isEmpty()){
 			String firstLine = numbers.split("\n")[0];
 			if(firstLine.startsWith("//")){
-				seperator = firstLine.substring(2);
-				numbers = numbers.substring(4);
+				String seperatorString = firstLine.substring(2);
+				if(seperatorString.length()!=1){
+					seperatorString = seperatorString.replace("[","");
+					seperatorString = seperatorString.replace("]", "");
+				}
+				seperator = seperatorString;
+				numbers = numbers.split("\n")[1];
 			}
 			String[] arrNumbersNewLine = numbers.split("\n");
 			
 			for (String strNewLine : arrNumbersNewLine){
-				String[] arrNumbers = strNewLine.split(seperator);
+				String[] arrNumbers = strNewLine.split(Pattern.quote(seperator));
 				for (String string : arrNumbers) {
 					iNumber = Integer.parseInt(string);
 					if(iNumber>=0 && iNumber<=1000)
