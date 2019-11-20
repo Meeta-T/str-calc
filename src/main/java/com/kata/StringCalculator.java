@@ -2,6 +2,8 @@ package com.kata;
 
 public class StringCalculator {
 	Integer add(String numbers){
-		return 0;
+		if(numbers.equals(""))
+			return 0;
+		return Integer.parseInt(numbers);
 	}
 }
