@@ -20,9 +20,16 @@ public class StringCalculatorTest {
 	public void initialie(){
 		stringCalculator = new StringCalculator();
 	}
+	
+	private Object[] parametersToShouldAdd() {
+	    return new Object[] { 
+	        new Object[] { "",0 }, 
+	        new Object[] { "2",2 },
+	        new Object[] { "3,5",8 }
+	    };
+	}
 	@Test
-	@Parameters({",0",
-				"2,2"})
+	@Parameters(method = "parametersToShouldAdd")
 	public void shouldAdd(String numbers,Integer result){
 		assertThat(stringCalculator.add(numbers),is(result));
 	}
